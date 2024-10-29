@@ -7,15 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>EDS Customer Portal User's Guide</title>
     <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            display: flex;
         }
 
         .container {
+            transition: margin-left 0.3s, width 0.3s;
+            width: calc(100% - 234px);
             margin-left: 234px; /* Adjusted for reduced sidebar width */
             padding: 20px;
         }
@@ -30,6 +34,8 @@
             background-color: #305277; /* Matched color */
             padding-top: 20px;
             text-align: center; /* Center the logo */
+            transform: translateX(0);
+            transition: transform 0.3s;
         }
 
         .sidebar img {
@@ -64,13 +70,20 @@
             border-bottom: 2px solid #436f99;
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
 
         header h1 {
             font-family: "Arial", sans-serif;
             font-size: 48px;
             color: #1e3a56; /* Similar color to the Dashboard header */
-            font-weight: bold;
+            margin: 0;
+        }
+        /* Hamburger menu for small screens */
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
         }
 
         /* Card style for sections */
@@ -115,12 +128,77 @@
             background-color: #3c6f99;
         }
 
+        /* Responsive Design based on Within Breakpoints*/
+        @media (max-width: 599px) {
+            /* Small screens */
+            .sidebar {
+                width: 180px;
+                transform: translateX(-180px); /* Hide sidebar by default */
+            }
+
+            .sidebar.show {
+                transform: translateX(0); /* Show sidebar when toggled */
+            }
+
+            /* Full width for container if the sidebar is hidden */
+            .container {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .container.sidebar-visible {
+                margin-left: 180px;
+                width: calc(100% - 180px);
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        /* Medium screens */
+        @media (min-width: 600px) and (max-width: 1239px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .container {
+                margin-left: 200px;
+                width: calc(100% - 200px);
+            }
+
+            .container.sidebar-hidden {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1240px) {
+            .sidebar {
+                width: 234px;
+            }
+
+            .container {
+                margin-left: 234px;
+                width: calc(100% - 234px);
+            }
+
+            .container.sidebar-hidden {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
         <!-- Move the logo to the top and center it -->
         <img src="img/logo.png" alt="EDS Logo">
         
@@ -142,11 +220,11 @@
     </div>
 
     <!-- Main Content -->
-    <div class="container">
-
+    <div class="container" id="main-container">
         <!-- Header -->
         <header>
             <h1>Customer Portal User's Guide</h1>
+            <span class="hamburger" onclick="toggleSidebar()"> <i class="fas fa-bars"></i></span>
         </header>
 
         <!-- Content Cards -->
@@ -401,12 +479,22 @@
             sections.forEach(section => {
                 section.classList.remove('active');
             });
-            // Show the selected section
+            document.querySelectorAll('.card').forEach(section => section.classList.remove('active'));
             document.getElementById(sectionId).classList.add('active');
+            // Hide sidebar on mobile after selection
+            document.getElementById('sidebar').classList.remove('show');
+            document.getElementById('main-container').classList.remove('sidebar-visible');
         }
 
         // Display the first section (Introduction) by default
         showSection('introduction');
+        function toggleSidebar() {
+            // Toggle sidebar visibility on mobile screens
+            const sidebar = document.getElementById('sidebar');
+            const mainContainer = document.getElementById('main-container');
+            sidebar.classList.toggle('show');
+            mainContainer.classList.toggle('sidebar-visible');
+        }
     </script>
 
 </body>
