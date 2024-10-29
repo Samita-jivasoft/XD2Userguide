@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Public Sans', 'Segoe UI';
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
@@ -31,7 +31,12 @@
             left: 0;
             height: 100%;
             width: 234px; /* New sidebar width */
-            background-color: #305277; /* Matched color */
+            /* Color from XD2 */
+            background: #002b57; 
+            background: -moz-linear-gradient(45deg, #002b57 0%, #3F5F81 100%); background:
+            -webkit-linear-gradient(45deg, #002b57 0%, #3F5F81 100%); background:
+            linear-gradient(45deg, #3F5F81 0%, #3F5F81 100%); background:
+            -webkit-linear-gradient(45deg, #002b57 0%, #3F5F81 100%);
             padding-top: 20px;
             text-align: center; /* Center the logo */
             transform: translateX(0);
@@ -48,9 +53,8 @@
             display: block;
             color: #ffffff;
             text-decoration: none;
-            font-size: 16px; /* Revert to original font size */
+            font-size: 15px; /* Revert to original font size */
             font-weight: bold; /* Set to bold */
-            font-family: "Arial", sans-serif; /* Match the font style */
             text-align: left; /* Left justify */
         }
 
@@ -65,27 +69,28 @@
         /* Header styling - Matching the Dashboard style in the screenshot */
         header {
             background: #ffffff;
-            color: #35424a;
+            color: #162A40;
             padding: 10px 20px;
-            border-bottom: 2px solid #436f99;
+            border-bottom: 2px solid #e8ecef;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         header h1 {
-            font-family: "Arial", sans-serif;
+            font-family: 'Public Sans', 'Segoe UI';
             font-size: 48px;
-            color: #1e3a56; /* Similar color to the Dashboard header */
+            color: #162A40; /* Similar color to the Dashboard header */
             margin: 0;
         }
         /* Hamburger menu for small screens */
         .hamburger {
             display: none;
-            font-size: 30px;
+            font-size: 20px;
             cursor: pointer;
+            margin-left: 10px;
         }
-
+   
         /* Card style for sections */
         .card {
             background-color: white;
@@ -97,16 +102,19 @@
         }
 
         .card h2 {
-            font-family: "Arial", sans-serif;
+            font-family: 'Public Sans', 'Segoe UI';
             font-size: 36px;
             font-weight: bold;
-            color: #1e3a56; /* Match the Dashboard header color */
+            color: #162A40; /* Match the Dashboard header color */
         }
 
         .card p {
             color: #666666;
             line-height: 1.6;
         }
+
+        .card ul li, .card ul li strong { color: #162A40;
+         }
 
         /* Active section (visible) */
         .active {
@@ -200,7 +208,7 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <!-- Move the logo to the top and center it -->
-        <img src="img/logo.png" alt="EDS Logo">
+        <img src="img/extraduty_logo258x68_wht.png" alt="EDS Logo" style="width: 70%;">
         
         <a href="javascript:void(0)" onclick="showSection('introduction')">Introduction</a>
         <a href="javascript:void(0)" onclick="showSection('getting-started')">Getting Started</a>
@@ -265,7 +273,7 @@
         <div class="card" id="home-page">
             <h2>Home Page</h2>
             <p>The home page dashboard gives you a snapshot of your account. From here, you can easily access important tasks such as managing details and payments.</p>
-            <img src="img/Homepage.png" alt="Home Page Dashboard" style="width:100%; max-width:800px;">
+            <img src="img/Homepage.png.png" alt="Home Page Dashboard" style="width:100%;">
         </div>
         
         <div class="card" id="scheduled-details">
