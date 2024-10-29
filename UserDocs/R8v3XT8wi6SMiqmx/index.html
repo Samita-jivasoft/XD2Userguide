@@ -8,6 +8,7 @@
     <title>EDS Customer Portal User's Guide</title>
     <meta name="robots" content="noindex, nofollow">
     <style>
+        /* Base styles */
         body {
             font-family: 'Public Sans', 'Segoe UI';
             background-color: #f4f4f4;
@@ -15,57 +16,64 @@
             padding: 0;
             display: flex;
         }
-
+    
         .container {
             transition: margin-left 0.3s, width 0.3s;
             width: calc(100% - 234px);
-            margin-left: 234px; /* Adjusted for reduced sidebar width */
+            margin-left: 234px;
             padding: 20px;
+            color: #162A40;
         }
-
+    
+        .container h2,
+        .container ol li,
+        .container ol li strong,
+        .card p,
+        .card h3,
+        .card ul li,
+        .card ol li,
+        .card ul li strong {
+            color: #162A40;
+        }
+    
         /* Sidebar */
         .sidebar {
             position: fixed;
             top: 0;
             left: 0;
             height: 100%;
-            width: 234px; /* New sidebar width */
-            /* Color from XD2 */
-            background: #002b57; 
-            background: -moz-linear-gradient(45deg, #002b57 0%, #3F5F81 100%); background:
-            -webkit-linear-gradient(45deg, #002b57 0%, #3F5F81 100%); background:
-            linear-gradient(45deg, #3F5F81 0%, #3F5F81 100%); background:
-            -webkit-linear-gradient(45deg, #002b57 0%, #3F5F81 100%);
+            width: 234px;
+            background: linear-gradient(45deg, #002b57 0%, #3F5F81 100%);
             padding-top: 20px;
-            text-align: center; /* Center the logo */
+            text-align: center;
             transform: translateX(0);
             transition: transform 0.3s;
         }
-
+    
         .sidebar img {
             margin-bottom: 20px;
             width: 150px;
         }
-
+    
         .sidebar a {
             padding: 15px 20px;
             display: block;
             color: #ffffff;
             text-decoration: none;
-            font-size: 15px; /* Revert to original font size */
-            font-weight: bold; /* Set to bold */
-            text-align: left; /* Left justify */
+            font-size: 15px;
+            font-weight: bold;
+            text-align: left;
         }
-
+    
         .sidebar a.indented {
-            padding-left: 35px; /* Indentation for certain items */
+            padding-left: 35px;
         }
-
+    
         .sidebar a:hover {
             background-color: #436f99;
         }
-
-        /* Header styling - Matching the Dashboard style in the screenshot */
+    
+        /* Header */
         header {
             background: #ffffff;
             color: #162A40;
@@ -75,51 +83,43 @@
             align-items: center;
             justify-content: space-between;
         }
-
+    
         header h1 {
-            font-family: 'Public Sans', 'Segoe UI';
             font-size: 48px;
-            color: #162A40; /* Similar color to the Dashboard header */
             margin: 0;
         }
-        /* Hamburger menu for small screens */
+    
         .hamburger {
             display: none;
             font-size: 20px;
             cursor: pointer;
             margin-left: 10px;
         }
-        .content-image{
-            width: 90%;
-        }
-        /* Card style for sections */
+    
+        /* Cards */
         .card {
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin-bottom: 20px;
-            display: none; /* Hide all sections initially */
+            display: none;
         }
-
+    
         .card h2 {
-            font-family: 'Public Sans', 'Segoe UI';
             font-size: 36px;
             font-weight: bold;
-            color: #162A40; /* Match the Dashboard header color */
         }
-
-        .card p,.card h3, .card ul li, .card ol li, .card ul li strong {
-            color: #162A40;
-            line-height: 1.6;
+    
+        .content-image {
+            width: 90%;
         }
-
-        /* Active section (visible) */
+    
         .active {
             display: block;
         }
-
-        /* Button style */
+    
+        /* Button */
         .btn {
             background-color: #1e3a56;
             color: white;
@@ -129,77 +129,75 @@
             margin-top: 10px;
             display: inline-block;
         }
-
+    
         .btn:hover {
             background-color: #3c6f99;
         }
-
-        /* Responsive Design based on Within Breakpoints*/
+    
+        /* Responsive Design */
         @media (max-width: 599px) {
-            /* Small screens */
             .sidebar {
                 width: 180px;
-                transform: translateX(-180px); /* Hide sidebar by default */
+                transform: translateX(-180px);
             }
-
+    
             .sidebar.show {
-                transform: translateX(0); /* Show sidebar when toggled */
+                transform: translateX(0);
             }
-
-            /* Full width for container if the sidebar is hidden */
+    
             .container {
                 margin-left: 0;
                 width: 100%;
             }
-
+    
             .container.sidebar-visible {
                 margin-left: 180px;
                 width: calc(100% - 180px);
             }
-
+    
             header h1 {
                 font-size: 24px;
             }
+    
             .card h2 {
-            font-size: 30px; 
+                font-size: 30px;
             }
-
+    
             .hamburger {
                 display: block;
             }
-            .content-image{
+    
+            .content-image {
                 width: 100%;
             }
         }
-
-        /* Medium screens */
+    
         @media (min-width: 600px) and (max-width: 1239px) {
             .sidebar {
                 width: 200px;
             }
-
+    
             .container {
                 margin-left: 200px;
                 width: calc(100% - 200px);
             }
-
+    
             .container.sidebar-hidden {
                 margin-left: 0;
                 width: 100%;
             }
         }
-
-        /* Large screens */
+    
         @media (min-width: 1240px) {
             .sidebar {
                 width: 234px;
             }
-
+    
             .container {
                 margin-left: 234px;
                 width: calc(100% - 234px);
             }
-
+    
             .container.sidebar-hidden {
                 margin-left: 0;
                 width: 100%;
