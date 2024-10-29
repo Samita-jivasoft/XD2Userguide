@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>EDS Customer Portal User's Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-left: 234px; /* Adjusted for reduced sidebar width */
+            padding: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 234px; /* New sidebar width */
+            background-color: #305277; /* Matched color */
+            padding-top: 20px;
+            text-align: center; /* Center the logo */
+        }
+
+        .sidebar img {
+            margin-bottom: 20px;
+            width: 150px;
+        }
+
+        .sidebar a {
+            padding: 15px 20px;
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px; /* Revert to original font size */
+            font-weight: bold; /* Set to bold */
+            font-family: "Arial", sans-serif; /* Match the font style */
+            text-align: left; /* Left justify */
+        }
+
+        .sidebar a.indented {
+            padding-left: 35px; /* Indentation for certain items */
+        }
+
+        .sidebar a:hover {
+            background-color: #436f99;
+        }
+
+        /* Header styling - Matching the Dashboard style in the screenshot */
+        header {
+            background: #ffffff;
+            color: #35424a;
+            padding: 10px 20px;
+            border-bottom: 2px solid #436f99;
+            display: flex;
+            align-items: center;
+        }
+
+        header h1 {
+            font-family: "Arial", sans-serif;
+            font-size: 48px;
+            color: #1e3a56; /* Similar color to the Dashboard header */
+            font-weight: bold;
+        }
+
+        /* Card style for sections */
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none; /* Hide all sections initially */
+        }
+
+        .card h2 {
+            font-family: "Arial", sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            color: #1e3a56; /* Match the Dashboard header color */
+        }
+
+        .card p {
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        /* Active section (visible) */
+        .active {
+            display: block;
+        }
+
+        /* Button style */
+        .btn {
+            background-color: #1e3a56;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #3c6f99;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Move the logo to the top and center it -->
+        <img src="img/logo.png" alt="EDS Logo">
+        
+        <a href="javascript:void(0)" onclick="showSection('introduction')">Current Customer Registration</a>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Header -->
+        <header>
+            <h1>Registering as a Current EDS Customer</h1>
+        </header>
+
+        <!-- Content Cards -->
+        <div class="card" id="introduction">
+            <h2>Welcome to the EDS Customer Portal</h2>
+            <p>This guide is designed to help you navigate registering on the new Customer Portal as an existing Extra Duty Solutions Customer. </p>
+        </div>
+
+        <h2>Getting Started</h2>
+
+        <ol>
+            <li>Visit the EDS Customer Portal login page.</li>
+            <br>
+            <img src="Img/Signin1.png" alt="Login Page">
+            <br>
+            <li>Click "Forgot Password."</li>
+            <li>The customer Portal will direct you to the Recover Password Screen, and prompt you to enter your email address.  Enter your email address and press "Email me a recovery code". </li>
+            <br>
+            <img src="Img/Login2.png" alt="Forgot Password">
+            <br>
+            <br>
+            <li>You will receive an email with a recovery code.  Enter the recovery code, and press "Verify Code".  It may take a couple of minutes to receive the email with your recovery code.</li>
+            <li>Once the recovery code has been entered, you will be directed to a screen to change your password.  The password must be 8 or more characters, and contain at least 1 upper and lower case letter, 1 number, and 1 special character.</li>
+            <li>Enter your new password twice, and press "Change Password>.</li>
+            <li>Once your password has successfully changed, you'll return to the login screen.  Enter your new credentials and press "Login".</li>
+            <br>
+            <img src="Img/basic1.png" alt="Basic Information">
+            <br>
+            <br>
+            <li>Upon login, you will be directed to the basic information page, where you'll verify your basic information, including Business Name, First and Last Name, email address, and phone number.  You'll also be asked to choose your Customer Type from a list of options which include: </p>
+            <ul>
+                <li><Strong>Individual</li></strong></li>
+                <li><strong>Private Company or LLC</strong></li>
+                <li><strong>Publicly Traded Company</strong></li>
+                <li><strong>Public Affiliated Entity</strong></li>
+
+                </ul>
+            <br>
+            <li>After Basic Information and correct Customer type are verified, press the "Billing" button to proceed to the Billing Information tab.</li>
+            <br>
+            <img src="Img/billing1.png" alt="Billing Information">
+            <br>
+            <br>
+            <li>In the Billing section, you will be able to confirm:  Billing Contact First and Last Name, Billing Address, Billing email, and Billing Phone Number.  Once you have validated that this information is correct, press the "Submit" button.  If this information is not correct, contact our Finance department at (203) 202-3991 ext 1.</li>
+                
+            <br>
+            <li>After validating your basic information, You'll be prompted to choose payment terms.  You will be able to choose from a list of options that correspond to the type of entity your company is.</li>
+            <br>
+
+            <img src="img/PaymentTerms1.png" alt="Payment Terms">
+            <br>
+            <br>
+            <li>Once you've selected from your list of available payment terms, select "Use Bank Account Form" or "Use Credit Card Form" to enter a payment method.  Publicly traded or Public Entities will be press skip to proceed to the next step.</li>
+            <br>
+            <img src="img/bankaccount1.png" alt="Bank Account">
+            <br>
+            <br>
+            <li>Once your bank account or credit card info has been accurately entered, select submit.  You will proceed to a confirmation screen informing you that you've successfully registered, and will be able to select "Go to Dashboard".</li>
+
+            <br>
+
+            </li>If you have questions or need additional assistance, reach out to your EDS Account Management team, or call <strong>(203) 202-3991 ext 1.</strong></li>
+
+
+
+       
+
+
+
+        <!-- Add more cards here for the remaining sections -->
+
+    </div>
+
+    <script>
+        // Function to show only one section at a time
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.card');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Display the first section (Introduction) by default
+        showSection('introduction');
+    </script>
+
+</body>
+</html>

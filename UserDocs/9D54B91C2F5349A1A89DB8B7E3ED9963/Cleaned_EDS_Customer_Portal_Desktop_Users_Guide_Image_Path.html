@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>EDS Customer Portal User's Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-left: 234px;
+            padding: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 234px;
+            background-color: #305277;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .sidebar img {
+            margin-bottom: 20px;
+            width: 150px;
+        }
+
+        .sidebar a {
+            padding: 15px 20px;
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .sidebar a.indented {
+            padding-left: 35px;
+        }
+
+        .sidebar a:hover {
+            background-color: #436f99;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            color: #35424a;
+            padding: 10px 20px;
+            border-bottom: 2px solid #436f99;
+            display: flex;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 48px;
+            color: #1e3a56;
+            font-weight: bold;
+        }
+
+        /* Card style for sections */
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .card h2 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #1e3a56;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .active {
+            display: block;
+        }
+
+        /* Button style */
+        .btn {
+            background-color: #1e3a56;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #3c6f99;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="images/logo.png" alt="EDS Logo">
+        <a href="javascript:void(0)" onclick="showSection('introduction')">Introduction</a>
+        <a href="javascript:void(0)" onclick="showSection('getting-started')">Getting Started</a>
+        <a href="javascript:void(0)" onclick="showSection('ui-walkthrough')">User Interface Walkthrough</a>
+        <a class="indented" href="javascript:void(0)" onclick="showSection('home-page')">Home</a>
+        <a class="indented" href="javascript:void(0)" onclick="showSection('scheduled-details')">Scheduled Details</a>
+        <a class="indented" href="javascript:void(0)" onclick="showSection('payment-methods')">List of Payment Methods</a>
+        <a class="indented" href="javascript:void(0)" onclick="showSection('invoices')">Invoices</a>
+        <a class="indented" href="javascript:void(0)" onclick="showSection('payments')">Payments</a>
+        <a class="indented" href="javascript:void(0)" onclick="showSection('request-detail')">Request a Detail</a>
+        <a class="indented" href="javascript:void(0)" onclick="showSection('detail-history')">Detail History</a>
+        <a href="javascript:void(0)" onclick="showSection('profile-menu')">Profile Menu</a>
+        <a href="javascript:void(0)" onclick="showSection('troubleshooting')">Troubleshooting Account Issues</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Customer Portal User's Guide</h1>
+        </header>
+
+        <!-- Content Cards -->
+        <div class="card" id="introduction">
+            <h2>Welcome to the EDS Customer Portal</h2>
+            <p>This guide is designed to help you navigate and make the most of the Extra Duty Solutions (EDS) Customer Portal. Whether you're looking to request off-duty details, manage payments, or view invoices, this guide will provide step-by-step instructions and helpful tips.</p>
+        </div>
+
+        <div class="card" id="ui-walkthrough">
+            <h2>User Interface Walkthrough</h2>
+            <p>The left-side navigation toolbar contains all major actions you can take in the EDS Customer Portal. Each item leads to a corresponding page where you can perform specific tasks related to managing your account and services. Below is a walkthrough of the different sections:</p>
+            <ul style="line-height: 2;">
+                <li><strong>Home</strong>: The home page provides a snapshot of your account status. From here, you can quickly access important tasks like managing details and payments.</li>
+                <li><strong>Scheduled Details</strong>: This section allows you to review, cancel, and edit upcoming scheduled details. You'll be able to view the details you have requested or scheduled.</li>
+                <li><strong>List of Payment Methods</strong>: Manage your payment methods for paying invoices. You can add a new payment method or choose from the existing ones.</li>
+                <li><strong>Invoices</strong>: View and pay invoices for services. This section provides a list of all invoices associated with your account, allowing you to review and settle any outstanding payments.</li>
+                <li><strong>Payments</strong>: Review your payment history in this section. You can see all transactions, including past payments made through the portal.</li>
+                <li><strong>Request a Detail</strong>: Submit a request for a new off-duty detail. Fill in the required information to schedule and request the service.</li>
+                <li><strong>Detail History</strong>: View your history of requested and completed details. This section helps you track past services for your records.</li>
+                <li><strong>Profile Menu</strong>: This area allows you to manage your account details. Update your personal and business information, including your contact details and password.</li>
+            </ul>
+        </div>
+
+        <div class="card" id="getting-started">
+            <h2>Getting Started</h2>
+            <p><strong>For New Customers:</strong> Follow the steps below to create a new account:</p>
+            <ol>
+                <li>Visit the EDS Customer Portal login page.</li>
+                <li>Click "Register as New Customer."</li>
+                <li>Complete the registration form and submit your details.</li>
+                <li>EDS will review your registration and grant you access within 30 minutes (during business hours) or 8 hours (off-hours).</li>
+            </ol>
+            <p><strong>For Existing EDS Customers:</strong> Use your credentials to log in and follow the prompts for re-registration if required.</p>
+        </div>
+
+        <div class="card" id="home-page">
+            <h2>Home Page</h2>
+            <p>The home page dashboard gives you a snapshot of your account. From here, you can easily access important tasks such as managing details and payments.</p>
+            <img src="users_guide/images/Homepage.png" alt="Home Page Dashboard" style="width:100%; max-width:800px;">
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.card').forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+        showSection('introduction'); // Display the Introduction by default
+    </script>
+
+</body>
+</html>

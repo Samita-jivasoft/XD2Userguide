@@ -1,0 +1,413 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>EDS Customer Portal User's Guide</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-left: 234px; /* Adjusted for reduced sidebar width */
+            padding: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 234px; /* New sidebar width */
+            background-color: #305277; /* Matched color */
+            padding-top: 20px;
+            text-align: center; /* Center the logo */
+        }
+
+        .sidebar img {
+            margin-bottom: 20px;
+            width: 150px;
+        }
+
+        .sidebar a {
+            padding: 15px 20px;
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px; /* Revert to original font size */
+            font-weight: bold; /* Set to bold */
+            font-family: "Arial", sans-serif; /* Match the font style */
+            text-align: left; /* Left justify */
+        }
+
+        .sidebar a.indented {
+            padding-left: 35px; /* Indentation for certain items */
+        }
+
+        .sidebar a:hover {
+            background-color: #436f99;
+        }
+
+        /* Header styling - Matching the Dashboard style in the screenshot */
+        header {
+            background: #ffffff;
+            color: #35424a;
+            padding: 10px 20px;
+            border-bottom: 2px solid #436f99;
+            display: flex;
+            align-items: center;
+        }
+
+        header h1 {
+            font-family: "Arial", sans-serif;
+            font-size: 48px;
+            color: #1e3a56; /* Similar color to the Dashboard header */
+            font-weight: bold;
+        }
+
+        /* Card style for sections */
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            display: none; /* Hide all sections initially */
+        }
+
+        .card h2 {
+            font-family: "Arial", sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            color: #1e3a56; /* Match the Dashboard header color */
+        }
+
+        .card p {
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        /* Active section (visible) */
+        .active {
+            display: block;
+        }
+
+        /* Button style */
+        .btn {
+            background-color: #1e3a56;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #3c6f99;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Move the logo to the top and center it -->
+        <img src="img/logo.png" alt="EDS Logo">
+        
+        <a href="javascript:void(0)" onclick="showSection('introduction')">Introduction</a>
+        <a href="javascript:void(0)" onclick="showSection('getting-started')">Getting Started</a>
+        <a href="javascript:void(0)" onclick="showSection('ui-walkthrough')">User Interface Walkthrough</a>
+
+        <!-- Indented and left-aligned navigation items -->
+        <a class="indented" href="javascript:void(0)" onclick="showSection('home-page')">Home</a>
+        <a class="indented" href="javascript:void(0)" onclick="showSection('scheduled-details')">Scheduled Details</a>
+        <a class="indented" href="javascript:void(0)" onclick="showSection('payment-methods')">List of Payment Methods</a>
+        <a class="indented" href="javascript:void(0)" onclick="showSection('invoices')">Invoices</a>
+        <a class="indented" href="javascript:void(0)" onclick="showSection('payments')">Payments</a>
+        <a class="indented" href="javascript:void(0)" onclick="showSection('request-detail')">Request a Detail</a>
+        <a class="indented" href="javascript:void(0)" onclick="showSection('detail-history')">Detail History</a>
+
+        <a href="javascript:void(0)" onclick="showSection('profile-menu')">Profile Menu</a>
+        <a href="javascript:void(0)" onclick="showSection('troubleshooting')">Troubleshooting Account Issues</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <!-- Header -->
+        <header>
+            <h1>Customer Portal User's Guide</h1>
+        </header>
+
+        <!-- Content Cards -->
+        <div class="card" id="introduction">
+            <h2>Welcome to the EDS Customer Portal</h2>
+            <p>This guide is designed to help you navigate and make the most of the Extra Duty Solutions (EDS) Customer Portal. Whether you're looking to request off-duty details, manage payments, or view invoices, this guide will provide step-by-step instructions and helpful tips.</p>
+        </div>
+
+        <div class="card" id="ui-walkthrough">
+            <h2>User Interface Walkthrough</h2>
+            <p>The left-side navigation toolbar contains all major actions you can take in the EDS Customer Portal. Each item leads to a corresponding page where you can perform specific tasks related to managing your account and services. Below is a walkthrough of the different sections:</p>
+            <ul style="line-height: 2;">
+                <li><strong>Home</strong>: The home page provides a snapshot of your account status. From here, you can quickly access important tasks like managing details and payments.</li>
+                <li><strong>Scheduled Details</strong>: This section allows you to review, cancel, and edit upcoming scheduled details. You'll be able to view the details you have requested or scheduled.</li>
+                <li><strong>List of Payment Methods</strong>: Manage your payment methods for paying invoices. You can add a new payment method or choose from the existing ones.</li>
+                <li><strong>Invoices</strong>: View and pay invoices for services. This section provides a list of all invoices associated with your account, allowing you to review and settle any outstanding payments.</li>
+                <li><strong>Payments</strong>: Review your payment history in this section. You can see all transactions, including past payments made through the portal.</li>
+                <li><strong>Request a Detail</strong>: Submit a request for a new off-duty detail. Fill in the required information to schedule and request the service.</li>
+                <li><strong>Detail History</strong>: View your history of requested and completed details. This section helps you track past services for your records.</li>
+                <li><strong>Profile Menu</strong>: This area allows you to manage your account details. Update your personal and business information, including your contact details and password.</li>
+            </ul>
+        </div>
+        
+
+        <div class="card" id="getting-started">
+            <h2>Getting Started</h2>
+            <p>This section helps new customers get set up quickly by explaining how to create an account, and for existing customers, how to log in and re-register.</p>
+            <p><strong>For New Customers:</strong> Follow the steps below to create a new account:</p>
+            <ol>
+                <li>Visit the EDS Customer Portal login page.</li>
+                <li>Click "Register as New Customer."</li>
+                <li>Complete the registration form and submit your details.</li>
+                <li>EDS will review your registration and grant you access within 30 minutes (during business hours) or 8 hours (off-hours).</li>
+            </ol>
+            <p><strong>For Existing EDS Customers:</strong> Use your credentials to log in and follow the prompts for re-registration if required.</p>
+        </div>
+
+        <div class="card" id="home-page">
+            <h2>Home Page</h2>
+            <p>The home page dashboard gives you a snapshot of your account. From here, you can easily access important tasks such as managing details and payments.</p>
+            <img src="img/Homepage.png" alt="Home Page Dashboard" style="width:100%; max-width:800px;">
+        </div>
+        
+        <div class="card" id="scheduled-details">
+            <h3>Scheduled Details Guide</h3>
+            <p>
+                <strong>Scheduled Details Section Overview:</strong><br>
+                The Scheduled Details section allows you to review, manage, and modify upcoming scheduled details. In this section, you'll find detailed information about each scheduled detail, including dates, locations, assigned officers, and more. You also have the ability to search, filter, and customize the table view to fit your preferences.
+            </p>
+            <p>
+                <strong>Main Features of the Scheduled Details Section:</strong><br>
+                This section allows you to view, cancel, and edit upcoming scheduled details. You can view information such as:
+                <ul>
+                    <li>Start and end date/time</li>
+                    <li>Location of the detail</li>
+                    <li>Number of available openings and filled positions</li>
+                    <li>Officers assigned to the detail</li>
+                    <li>Agency and customer information</li>
+                    <li>Contact details and notes</li>
+                </ul>
+            </p>
+            <p>
+                <strong>Functions Above the Toolbar:</strong><br>
+                <ul>
+                    <li><strong>Refresh:</strong> Updates the displayed list of scheduled details to reflect the most recent changes or updates made by other users or the system.</li>
+                    <li><strong>Detail History:</strong> Provides access to a historical view of completed or canceled scheduled details, allowing you to review past details for reference or reporting.</li>
+                    <li><strong>Cancel:</strong> Allows you to cancel an ongoing action or process, or a specific scheduled detail that is selected.</li>
+                </ul>
+            </p>
+            <p>
+                <strong>Options Below the Toolbar:</strong><br>
+                <ul>
+                    <li><strong>Search:</strong> A quick search option to find specific scheduled details based on keywords such as agency name, customer name, or officer information.</li>
+                    <li><strong>Filters:</strong> Filter the list of scheduled details based on various criteria like date range, location, or officer assignments.</li>
+                    <li><strong>Groups:</strong> Group the scheduled details by specific fields like agency name, location, or assigned officers.</li>
+                    <li><strong>Table Settings:</strong> Customize the table by adding, removing, or rearranging columns.</li>
+                    <li><strong>Save Settings:</strong> Save your customized table settings, filters, and groupings.</li>
+                </ul>
+            </p>
+            <p>
+                <strong>Details Table Breakdown:</strong><br>
+                <ul>
+                    <li><strong>Start Date / End Date:</strong> Displays the start and end dates for the scheduled details.</li>
+                    <li><strong>Start Time / End Time:</strong> Shows the start and end times for the detail.</li>
+                    <li><strong>Location:</strong> The physical location where the scheduled detail is taking place.</li>
+                    <li><strong>Openings / Filled:</strong> Number of open positions and filled positions for officers.</li>
+                    <li><strong>Officers:</strong> Displays the list of officers assigned to the scheduled detail.</li>
+                    <li><strong>Agency Name:</strong> The law enforcement agency responsible for the scheduled detail.</li>
+                    <li><strong>Customer Name:</strong> The customer associated with the scheduled detail.</li>
+                    <li><strong>Holds:</strong> Indicates if there are any holds or restrictions on the detail.</li>
+                    <li><strong>Contact Information (Name, Email, Phone):</strong> Displays the contact information for the detail.</li>
+                    <li><strong>Notes:</strong> Any additional information or instructions related to the scheduled detail.</li>
+                </ul>
+            </p>
+            <p>
+                <strong>Request a Detail Button:</strong><br>
+                In the bottom-left corner of the Scheduled Details page, you’ll find the Request a Detail button. Clicking this button redirects you to the Request a Detail function, where you can initiate and submit a new off-duty detail request.
+            </p>
+            <p>
+                <strong>How to Use the Scheduled Details Section:</strong><br>
+                <ul>
+                    <li><strong>Viewing Details:</strong> Browse through the scheduled details and view important information such as start/end dates, locations, and officer assignments.</li>
+                    <li><strong>Searching for Details:</strong> Use the Search option to quickly locate specific details by entering keywords like customer name or officer information.</li>
+                    <li><strong>Filtering and Grouping Details:</strong> Use the Filters option to narrow down your list based on date ranges, location, or other criteria.</li>
+                    <li><strong>Customizing the Table View:</strong> Adjust the Table Settings to show or hide columns, and use Save Settings to retain your customized view.</li>
+                    <li><strong>Managing Scheduled Details:</strong> From the scheduled details page, you can cancel or edit existing details, refresh the list, or view detail history using the Detail History option.</li>
+                </ul>
+            </p>
+        </div>
+        
+        <div class="card" id="payment-methods">
+            <h3>List of Payment Methods Guide</h3>
+            <p>
+                <strong>Overview:</strong><br>
+                The List of Payment Methods section allows you to view and manage the payment methods linked to your account. You can add new methods, edit existing ones, or remove methods that are no longer needed.
+            </p>
+            <p>
+                <strong>Main Features of the List of Payment Methods Section:</strong><br>
+                In this section, you can:
+                <ul>
+                    <li>View your saved payment methods</li>
+                    <li>Choose which payment method to use for invoices and payments</li>
+                    <li>Add a new ACH or credit card payment method</li>
+                    <li>Edit or remove existing payment methods</li>
+                </ul>
+            </p>
+            <p>
+                <strong>Functions Above the Toolbar:</strong><br>
+                <ul>
+                    <li><strong>Search:</strong> Allows you to quickly find specific payment methods by entering keywords like the payment method name or type.</li>
+                    <li><strong>Filters:</strong> Filter the list of payment methods based on the method type, last four digits, or other details.</li>
+                    <li><strong>Groups:</strong> Group the payment methods by type, last four digits, or other attributes.</li>
+                    <li><strong>Table Settings:</strong> Customize the table by adding, removing, or rearranging columns to better view your payment methods.</li>
+                </ul>
+            </p>
+            <p>
+                <strong>Adding a Payment Method:</strong><br>
+                Use the buttons at the bottom of the page to add a new ACH or credit card. When adding a payment method, you'll be prompted to enter the necessary details, including account or card information, and the payment method type.
+            </p>
+            <p>
+                <strong>Managing Payment Methods:</strong><br>
+                You can edit or delete payment methods from this section. Select a payment method and choose the appropriate action, such as editing the details or removing the method entirely.
+            </p>
+        </div>
+        
+        <div class="card" id="invoices">
+            <h3>Invoices Guide</h3>
+            <p>
+                <strong>Overview:</strong><br>
+                The Invoices section allows you to view and manage your invoices. You can track payment statuses, view invoice details, and make payments directly through the portal.
+            </p>
+            <p>
+                <strong>Main Features of the Invoices Section:</strong><br>
+                In this section, you can:
+                <ul>
+                    <li>View the status of your invoices (paid, unpaid, or overdue)</li>
+                    <li>Check important details such as invoice numbers, dates, due dates, and balance amounts</li>
+                    <li>Make payments for unpaid invoices</li>
+                    <li>Filter and group invoices based on their status or payment history</li>
+                </ul>
+            </p>
+            <p>
+                <strong>Functions Above the Toolbar:</strong><br>
+                <ul>
+                    <li><strong>Search:</strong> Find invoices using keywords such as invoice number, customer name, or agency name.</li>
+                    <li><strong>Filters:</strong> Narrow down your list of invoices by applying filters like status, due date, or balance due.</li>
+                    <li><strong>Groups:</strong> Group invoices by customer, status, or other details for easier viewing.</li>
+                    <li><strong>Table Settings:</strong> Customize the columns in your invoice list to display the information you need.</li>
+                </ul>
+            </p>
+            <p>
+                <strong>Managing Invoices:</strong><br>
+                You can view more details about each invoice by selecting it from the list. Additionally, use the "View Payment" button to see payment history for specific invoices, and the "Refresh List" button to update the list with the latest invoice data.
+            </p>
+            <p>
+                <strong>Payment Options:</strong><br>
+                You can make payments directly from this section by selecting an unpaid invoice and clicking "View Payment." Follow the instructions to complete your payment using one of your saved payment methods or by adding a new payment method.
+            </p>
+        </div>
+        
+        <div class="card" id="profile-menu">
+            <h3>User Profile Guide</h3>
+            <p>
+                <strong>Overview:</strong><br>
+                The *User Profile* tab displays your personal information, along with the *Customer (Business) Name* associated with your account. This section allows you to update your contact details.
+            </p>
+            <p>
+                <strong>Fields Available:</strong><br>
+                <ul>
+                    <li><strong>Customer (Business) Name:</strong> Displays the name of the business or organization associated with your account. This field is non-editable.</li>
+                    <li><strong>First Name:</strong> Editable field for your first name.</li>
+                    <li><strong>Last Name:</strong> Editable field for your last name (required).</li>
+                    <li><strong>Phone Number:</strong> Editable field for your contact number (required).</li>
+                    <li><strong>Email:</strong> Displays your email address. This field cannot be edited.</li>
+                </ul>
+            </p>
+            <p>
+                <strong>How to Update Your User Profile:</strong><br>
+                <ol>
+                    <li>Edit any fields (first name, last name, phone number).</li>
+                    <li>Once satisfied with the changes, click the <strong>Review</strong> button at the top-right to review your changes.</li>
+                    <li>Click <strong>Submit</strong> to save your changes or <strong>Cancel</strong> to exit without saving.</li>
+                </ol>
+            </p>
+            <p>
+                <strong>Navigation Options:</strong><br>
+                <ul>
+                    <li><strong>Review:</strong> Allows you to review changes before submission.</li>
+                    <li><strong>Cancel:</strong> Cancels changes and returns to the previous screen without saving.</li>
+                </ul>
+            </p>
+        </div>
+        
+
+        <div class="card" id="detail-history">
+            <h3>Detail History Guide</h3>
+            <p>
+                <strong>Overview:</strong><br>
+                The Detail History section allows you to view the history of completed or canceled scheduled details. You can track past jobs, review job details, and access reporting information for historical records.
+            </p>
+            <p>
+                <strong>Main Features of the Detail History Section:</strong><br>
+                In this section, you can:
+                <ul>
+                    <li>View the start and end dates of each detail</li>
+                    <li>Check the location and officers assigned to completed details</li>
+                    <li>Track hours worked, customer information, and agency details</li>
+                    <li>View associated invoice amounts for each completed detail</li>
+                </ul>
+            </p>
+            <p>
+                <strong>Functions Above the Toolbar:</strong><br>
+                <ul>
+                    <li><strong>Search:</strong> Find specific details using keywords such as agency name, customer name, or officer information.</li>
+                    <li><strong>Filters:</strong> Narrow down the history list using filters like date range, location, or officer assignments.</li>
+                    <li><strong>Groups:</strong> Group the history details by specific fields like agency name, location, or customer name.</li>
+                    <li><strong>Table Settings:</strong> Customize the table by adding, removing, or rearranging columns to suit
+        
+                        
+
+
+
+        <!-- Add more cards here for the remaining sections -->
+
+    </div>
+
+    <script>
+        // Function to show only one section at a time
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.card');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Display the first section (Introduction) by default
+        showSection('introduction');
+    </script>
+
+</body>
+</html>
