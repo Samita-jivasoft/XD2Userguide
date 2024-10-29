@@ -90,7 +90,9 @@
             cursor: pointer;
             margin-left: 10px;
         }
-   
+        .content-image{
+            width: 90%;
+        }
         /* Card style for sections */
         .card {
             background-color: white;
@@ -108,13 +110,10 @@
             color: #162A40; /* Match the Dashboard header color */
         }
 
-        .card p {
-            color: #666666;
+        .card p, .card ul li, .card ul li strong {
+            color: #162A40;
             line-height: 1.6;
         }
-
-        .card ul li, .card ul li strong { color: #162A40;
-         }
 
         /* Active section (visible) */
         .active {
@@ -273,7 +272,7 @@
         <div class="card" id="home-page">
             <h2>Home Page</h2>
             <p>The home page dashboard gives you a snapshot of your account. From here, you can easily access important tasks such as managing details and payments.</p>
-            <img src="img/Homepage.png.png" alt="Home Page Dashboard" style="width:100%;">
+            <img src="img/Homepage.png.png" alt="Home Page Dashboard" style="width:90%;">
         </div>
         
         <div class="card" id="scheduled-details">
