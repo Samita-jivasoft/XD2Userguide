@@ -8,13 +8,16 @@
     <title>EDS Customer Portal User's Guide</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Public Sans', 'Segoe UI';
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            display: flex;
         }
 
         .container {
+            transition: margin-left 0.3s, width 0.3s;
+            width: calc(100% - 234px);
             margin-left: 234px; /* Adjusted for reduced sidebar width */
             padding: 20px;
         }
@@ -26,9 +29,16 @@
             left: 0;
             height: 100%;
             width: 234px; /* New sidebar width */
-            background-color: #305277; /* Matched color */
+            /* Background Color from XD2 */
+            background: #002b57; 
+            background: -moz-linear-gradient(45deg, #002b57 0%, #3F5F81 100%); background:
+            -webkit-linear-gradient(45deg, #002b57 0%, #3F5F81 100%); background:
+            linear-gradient(45deg, #3F5F81 0%, #3F5F81 100%); background:
+            -webkit-linear-gradient(45deg, #002b57 0%, #3F5F81 100%);
             padding-top: 20px;
             text-align: center; /* Center the logo */
+            transform: translateX(0);
+            transition: transform 0.3s;
         }
 
         .sidebar img {
@@ -41,9 +51,8 @@
             display: block;
             color: #ffffff;
             text-decoration: none;
-            font-size: 16px; /* Revert to original font size */
+            font-size: 15px; /* Revert to original font size */
             font-weight: bold; /* Set to bold */
-            font-family: "Arial", sans-serif; /* Match the font style */
             text-align: left; /* Left justify */
         }
 
@@ -58,20 +67,31 @@
         /* Header styling - Matching the Dashboard style in the screenshot */
         header {
             background: #ffffff;
-            color: #35424a;
+            color: #162A40;
             padding: 10px 20px;
-            border-bottom: 2px solid #436f99;
+            border-bottom: 2px solid #e8ecef;
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
 
         header h1 {
-            font-family: "Arial", sans-serif;
+            font-family: 'Public Sans', 'Segoe UI';
             font-size: 48px;
-            color: #1e3a56; /* Similar color to the Dashboard header */
-            font-weight: bold;
+            color: #162A40; /* Similar color to the Dashboard header */
+            margin: 0;
         }
-
+        /* Hamburger menu for small screens */
+        .hamburger {
+            display: none;
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .content-image{
+            padding: 5px;
+            width: 90%;
+        }
         /* Card style for sections */
         .card {
             background-color: white;
@@ -83,14 +103,17 @@
         }
 
         .card h2 {
-            font-family: "Arial", sans-serif;
+            font-family: 'Public Sans', 'Segoe UI';
             font-size: 36px;
             font-weight: bold;
-            color: #1e3a56; /* Match the Dashboard header color */
+            color: #162A40; /* Match the Dashboard header color */
+        }
+        .card h3{
+            color: #162A40; /* Match the Dashboard header color */
         }
 
-        .card p {
-            color: #666666;
+        .card p, .card ul li, .card ul li strong {
+            color: #162A40;
             line-height: 1.6;
         }
 
@@ -114,14 +137,87 @@
             background-color: #3c6f99;
         }
 
+        /* Responsive Design based on Within Breakpoints*/
+        @media (max-width: 599px) {
+            /* Small screens */
+            .sidebar {
+                width: 180px;
+                transform: translateX(-180px); /* Hide sidebar by default */
+            }
+
+            .sidebar.show {
+                transform: translateX(0); /* Show sidebar when toggled */
+            }
+
+            /* Full width for container if the sidebar is hidden */
+            .container {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .container.sidebar-visible {
+                margin-left: 180px;
+                width: calc(100% - 180px);
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+            .content-image{
+            width: 100%;
+            }
+           .schedule-detail{
+            width: 90%;
+           }
+            .hamburger {
+                display: block;
+            }
+        }
+
+        /* Medium screens */
+        @media (min-width: 600px) and (max-width: 1239px) {
+            .sidebar {
+                width: 200px;
+            }
+
+            .container {
+                margin-left: 200px;
+                width: calc(100% - 200px);
+            }
+
+            .container.sidebar-hidden {
+                margin-left: 0;
+                width: 100%;
+            }
+            .schedule-detail{
+            width: 90%;
+           }
+        }
+
+        /* Large screens */
+        @media (min-width: 1240px) {
+            .sidebar {
+                width: 234px;
+            }
+
+            .container {
+                margin-left: 234px;
+                width: calc(100% - 234px);
+            }
+
+            .container.sidebar-hidden {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
         <!-- Move the logo to the top and center it -->
-        <img src="img/logo.png" alt="EDS Logo">
+        <img src="img/extraduty_logo258x68_wht.png" alt="EDS Logo" style="width: 70%;">
         
         <a href="javascript:void(0)" onclick="showSection('introduction')">Introduction</a>
         <a href="javascript:void(0)" onclick="showSection('getting-started')">Getting Started</a>
@@ -140,11 +236,12 @@
     </div>
 
     <!-- Main Content -->
-    <div class="container">
+    <div class="container" id="main-container">
 
         <!-- Header -->
         <header>
             <h1>Customer Portal User's Guide</h1>
+            <span class="hamburger" onclick="toggleSidebar()">&#9776;</span> <!-- Hamburger icon -->
         </header>
 
         <!-- Content Cards -->
@@ -155,7 +252,7 @@
 
         <div class="card" id="ui-walkthrough">
             <h2>Home</h2>
-            <img src="Img/Walkthrough.PNG" alt="Home">
+            <img src="Img/Walkthrough.PNG" alt="Home" class="content-image">
             <p>The left-side navigation toolbar contains all major actions you can take in the EDS Customer Portal. Each item leads to a corresponding page where you can perform specific tasks related to managing your account and services. Below is a walkthrough of the different sections:</p>
             <ul style="line-height: 2;">
                 <li><strong>Home</strong>: The home page provides a snapshot of your account status. From here, you can quickly access important tasks like managing details and payments.</li>
@@ -170,7 +267,7 @@
         </div>
         
 
-        <div class="card" id="getting-started">
+        <div class="card" id="getting-started" class="content-image">
             <h2>Getting Started</h2>
             <p>This section helps new customers get set up quickly by explaining how to create an account, and for existing customers, how to log in and re-register.</p>
             <p><strong>For New Customers:</strong> Follow the steps below to create a new account:</p>
@@ -180,7 +277,7 @@
                 <li>Complete the registration form and submit your details.</li>
                 <li>EDS will review your registration and grant you access within 30 minutes (during business hours) or 8 hours (off-hours).</li>
             <br>
-                <img src="Img/Signin1.png" alt="Login Page">
+                <img src="Img/Signin1.png" alt="Login Page" class="content-image">
             </ol>
             <p><strong>For New EDS Customers:</strong> Click on Register as a New Customer.  </p>
             <li><strong>Fill Out the Registration Form:</strong>
@@ -211,13 +308,14 @@
              </div>
         
         
-        <div class="card" id="scheduled-details">
+        <div class="card" id="scheduled-details" class="content-image">
             <h3>Scheduled Details</h3>
             <p>
                 <strong>Scheduled Details Section Overview:</strong><br>
                 The Scheduled Details section allows you to review, manage, and modify upcoming scheduled details. In this section, you'll find detailed information about each scheduled detail, including dates, locations, assigned officers, and more. You also have the ability to search, filter, and customize the table view to fit your preferences.
-                <img src="Img/SchedDetails.PNG" alt="Scheduled Details">
+               
             </p>
+            <img src="Img/SchedDetails.PNG" alt="Scheduled Details" class="content-image">
             <p>
                 <strong>Main Features of the Scheduled Details Section:</strong><br>
                 This section allows you to view, cancel, and edit upcoming scheduled details. You can view information such as:
@@ -275,7 +373,7 @@
                     <li><strong>Filtering and Grouping Details:</strong> Use the Filters option to narrow down your list based on date ranges, location, or other criteria.</li>
                     <li><strong>Customizing the Table View:</strong> Adjust the Table Settings to show or hide columns, and use Save Settings to retain your customized view.</li>
                     <li><strong>Managing Scheduled Details:</strong> By selecting the 3 dots in the upper right hand corner of the table, you can choose to edit or cancel a detail.  Editing the detail will open the detail and allow you to update each of the tabs of information used to request the detail.</li>
-                    <img src="Img/SchedDetails2.PNG" alt="Edit_Cancel"> 
+                    <img src="Img/SchedDetails2.PNG" alt="Edit_Cancel" class="schedule-detail" > 
                 </ul>
             </p>
         </div>
@@ -321,7 +419,7 @@
                 <strong>Overview:</strong><br>
                 The Invoices section allows you to view and manage your invoices. You can track payment statuses, view invoice details, and make payments directly through the portal.
             </p>
-            <img src="Img/Invoices.png" alt="Invoices"> 
+            <img src="Img/Invoices.png" alt="Invoices" class="content-image"> 
             <p>
                 <strong>Main Features of the Invoices Section:</strong><br>
                 In this section, you can:
@@ -394,7 +492,7 @@
 
       
             <h3>Step 2: Pick a Business Entity</h3>
-            <img src="Img/ReqDetail1.PNG" alt="Select Agency">   
+            <img src="Img/ReqDetail1.PNG" alt="Select Agency" class="content-image">   
             <br>  
             <p>
                 A list of business entities or agencies your company is registered with will appear in the dropdown. Select the appropriate business entity for your request.
@@ -402,7 +500,7 @@
             </p>
             
             <h3>Step 3: Enter Contact Information</h3>
-            <img src="Img/ReqDetail3.PNG" alt="Contact Information">   
+            <img src="Img/ReqDetail3.PNG" alt="Contact Information" class="content-image">   
             <br>  
             <p>
                 Fill in the required <strong>Contact Name</strong>, <strong>Phone Number</strong>, and <strong>Email Address</strong> for the person responsible for this detail.
@@ -410,7 +508,7 @@
             </p>
         
             <h3>Step 4: Additional Information (Custom Agency Questions)</h3>
-            <img src="Img/ReqDetail2.PNG" alt="Custom Agency Questionnaire">   
+            <img src="Img/ReqDetail2.PNG" alt="Custom Agency Questionnaire" class="content-image">   
             <br>  
             <p>
                 Some agencies may require specific information to be entered during the detail request. These fields may include:
@@ -427,7 +525,7 @@
             </p>
         
             <h3>Step 5: Enter Detail Information</h3>
-            <img src="Img/ReqDetail6.PNG" alt="Detail Information">   
+            <img src="Img/ReqDetail6.PNG" alt="Detail Information" class="content-image">   
             <br>  
             <p>
                 Specify the duties the officers are expected to perform for this detail. Enter the <strong>Number of Officers</strong> required for the event.
@@ -436,7 +534,7 @@
             </p>
         
             <h3>Step 6: Detail Location</h3>
-            <img src="Img/ReqDetail7.PNG" alt="Detail Location">   
+            <img src="Img/ReqDetail7.PNG" alt="Detail Location" class="content-image">   
             <br>  
             <p>
                 Enter the <strong>Address Line 1</strong>, <strong>Address Line 2</strong> (optional), <strong>City</strong>, <strong>State</strong>, and <strong>Zip Code</strong> for the detail location.
@@ -444,7 +542,7 @@
             </p>
         
             <h3>Step 7: Schedule the Detail</h3>
-            <img src="Img/ReqDetail8.PNG" alt="Schedule the Detail">   
+            <img src="Img/ReqDetail8.PNG" alt="Schedule the Detail" class="content-image">   
             <br>  
             <p>
                 Use the calendar tool to select the <strong>Start Date</strong> and <strong>End Date</strong> of the detail. Input the start and end times for the detail if required.
@@ -460,7 +558,7 @@
             </p>
         
             <h3>Step 9: Confirmation</h3>
-            <img src="Img/ReqDetail10.PNG" alt="Detail Confirmation">   
+            <img src="Img/ReqDetail10.PNG" alt="Detail Confirmation" class="content-image">   
             <br>  
             <p>
                 After submitting, you will see a confirmation message indicating that the request was submitted successfully.
@@ -472,7 +570,7 @@
         <div class="card" id="payments">
             <h2>Payments Section</h2>
             <p>The <strong>Payments</strong> section allows you to view and manage payments made on your account. From this page, you can track payment statuses, view invoice details, and access historical payment data. The table below presents an organized view of all payment-related information.</p>
-            <img src="Img/Payments1.PNG" alt="Payments"> 
+            <img src="Img/Payments1.PNG" alt="Payments" class="content-image"> 
             <p><strong>Features of the Payments Section:</strong></p>
             <ul>
                 <li><strong>Status:</strong> Displays the payment status for each invoice.</li>
@@ -511,7 +609,7 @@
                 The Detail History section allows you to view the history of completed or canceled scheduled details. You can track past jobs, review job details, and access reporting information for historical records.
             </p>
             <p>
-            <img src="Img/detailhistory1.PNG" alt="Detail History"> 
+            <img src="Img/detailhistory1.PNG" alt="Detail History" class="content-image"> 
             <br>
                 <strong>In this section, you can:</strong><br>
                 <ul>
@@ -547,10 +645,22 @@
             });
             // Show the selected section
             document.getElementById(sectionId).classList.add('active');
+
+            // Hide sidebar on mobile after selection
+            document.getElementById('sidebar').classList.remove('show');
+            document.getElementById('main-container').classList.remove('sidebar-visible');
         }
 
         // Display the first section (Introduction) by default
         showSection('introduction');
+
+        // Function to toggle sidebar visibility on small screens
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContainer = document.getElementById('main-container');
+            sidebar.classList.toggle('show');
+            mainContainer.classList.toggle('sidebar-visible');
+        }
     </script>
 
 </body>

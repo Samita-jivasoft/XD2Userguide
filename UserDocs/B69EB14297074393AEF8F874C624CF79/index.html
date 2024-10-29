@@ -29,7 +29,7 @@
             left: 0;
             height: 100%;
             width: 234px; /* New sidebar width */
-            /* Color from XD2 */
+            /* Background Color from XD2 */
             background: #002b57; 
             background: -moz-linear-gradient(45deg, #002b57 0%, #3F5F81 100%); background:
             -webkit-linear-gradient(45deg, #002b57 0%, #3F5F81 100%); background:
@@ -89,9 +89,9 @@
             margin-left: 10px;
         }
         .content-image{
+            padding: 5px;
             width: 90%;
         }
-   
         /* Card style for sections */
         .card {
             background-color: white;
@@ -106,6 +106,9 @@
             font-family: 'Public Sans', 'Segoe UI';
             font-size: 36px;
             font-weight: bold;
+            color: #162A40; /* Match the Dashboard header color */
+        }
+        .card h3{
             color: #162A40; /* Match the Dashboard header color */
         }
 
@@ -156,14 +159,16 @@
                 margin-left: 180px;
                 width: calc(100% - 180px);
             }
-            .content-image{
-            width: 100%;
-        }
-   
+
             header h1 {
                 font-size: 24px;
             }
-
+            .content-image{
+            width: 100%;
+            }
+           .schedule-detail{
+            width: 90%;
+           }
             .hamburger {
                 display: block;
             }
@@ -184,6 +189,9 @@
                 margin-left: 0;
                 width: 100%;
             }
+            .schedule-detail{
+            width: 90%;
+           }
         }
 
         /* Large screens */
@@ -209,7 +217,7 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <!-- Move the logo to the top and center it -->
-        <img src="img/logo.png" alt="EDS Logo">
+        <img src="img/extraduty_logo258x68_wht.png" alt="EDS Logo" style="width: 70%;">
         
         <a href="javascript:void(0)" onclick="showSection('introduction')">Current Customer Registration</a>
 
