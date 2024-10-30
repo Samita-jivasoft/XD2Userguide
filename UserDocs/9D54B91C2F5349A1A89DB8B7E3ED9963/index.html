@@ -13,7 +13,11 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            display: flex;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+        *, *::before, *::after {
+            box-sizing: inherit;
         }
     
         .container {
@@ -48,6 +52,7 @@
             text-align: center;
             transform: translateX(0);
             transition: transform 0.3s;
+            overflow-y: hidden;
         }
     
         .sidebar img {
@@ -113,6 +118,7 @@
     
         .content-image {
             width: 90%;
+            max-width: 100%;
         }
     
         .active {
@@ -156,19 +162,22 @@
             }
     
             header h1 {
-                font-size: 28px;
+                font-size: 20px;
             }
     
             .card h2 {
-                font-size: 24px;
+                font-size: 18px;
             }
     
             .hamburger {
                 display: block;
             }
     
-            .content-image {
+            .content-image,  .schedule-detail {
                 width: 100%;
+            }
+            .schedule-detail{
+                padding-top: 10px;
             }
         }
     
