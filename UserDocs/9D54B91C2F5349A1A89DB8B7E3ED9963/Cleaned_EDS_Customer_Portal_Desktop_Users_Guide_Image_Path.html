@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,18 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>EDS Customer Portal User's Guide</title>
     <style>
+        /* Base styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Public Sans', 'Segoe UI';
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
+            box-sizing: border-box;
         }
-
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+    
         .container {
+            transition: margin-left 0.3s, width 0.3s;
+            width: calc(100% - 234px);
             margin-left: 234px;
             padding: 20px;
+            color: #162A40;
         }
-
+    
+        .container h2,
+        .container ol li,
+        .container ol li strong,
+        .card p,
+        .card h3,
+        .card ul li,
+        .card ol li,
+        .card ul li strong {
+            color: #162A40;
+        }
+    
         /* Sidebar */
         .sidebar {
             position: fixed;
@@ -26,51 +45,62 @@
             left: 0;
             height: 100%;
             width: 234px;
-            background-color: #305277;
+            /* XD2 Sidebard Background Color */
+            background: linear-gradient(45deg, #002b57 0%, #3F5F81 100%); 
             padding-top: 20px;
             text-align: center;
+            transform: translateX(0);
+            transition: transform 0.3s;
+            overflow-y: hidden;
         }
-
+    
         .sidebar img {
             margin-bottom: 20px;
             width: 150px;
         }
-
+    
         .sidebar a {
             padding: 15px 20px;
             display: block;
-            color: #fff;
+            color: #ffffff;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
             text-align: left;
         }
-
+    
         .sidebar a.indented {
             padding-left: 35px;
         }
-
+    
         .sidebar a:hover {
             background-color: #436f99;
         }
-
+    
         /* Header */
         header {
-            background: #fff;
-            color: #35424a;
+            background: #ffffff;
+            color: #162A40;
             padding: 10px 20px;
-            border-bottom: 2px solid #436f99;
+            border-bottom: 2px solid #e8ecef;
             display: flex;
             align-items: center;
+            justify-content: space-between;
         }
-
+    
         header h1 {
-            font-size: 48px;
-            color: #1e3a56;
-            font-weight: bold;
+            font-size: 40px;
+            margin: 0;
         }
-
-        /* Card style for sections */
+    
+        .hamburger {
+            display: none;
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+    
+        /* Cards */
         .card {
             background-color: white;
             border-radius: 8px;
@@ -79,23 +109,22 @@
             margin-bottom: 20px;
             display: none;
         }
-
+    
         .card h2 {
-            font-size: 36px;
-            font-weight: bold;
-            color: #1e3a56;
+            font-size: 28px;
+          
         }
-
-        .card p {
-            color: #666;
-            line-height: 1.6;
+    
+        .content-image {
+            width: 90%;
+            max-width: 100%;
         }
-
+    
         .active {
             display: block;
         }
-
-        /* Button style */
+    
+        /* Button */
         .btn {
             background-color: #1e3a56;
             color: white;
@@ -105,18 +134,90 @@
             margin-top: 10px;
             display: inline-block;
         }
-
+    
         .btn:hover {
             background-color: #3c6f99;
         }
-
+    
+        /* Responsive Design */
+        @media (max-width: 599px) {
+            .sidebar {
+                width: 180px;
+                transform: translateX(-180px);
+            }
+    
+            .sidebar.show {
+                transform: translateX(0);
+            }
+    
+            .container {
+                margin-left: 0;
+                width: 100%;
+            }
+    
+            .container.sidebar-visible {
+                margin-left: 180px;
+                width: calc(100% - 180px);
+            }
+    
+            header h1 {
+                font-size: 20px;
+            }
+    
+            .card h2 {
+                font-size: 18px;
+            }
+    
+            .hamburger {
+                display: block;
+            }
+    
+            .content-image,  .schedule-detail {
+                width: 100%;
+            }
+            .schedule-detail{
+                padding-top: 10px;
+            }
+        }
+    
+        @media (min-width: 600px) and (max-width: 1239px) {
+            .sidebar {
+                width: 200px;
+            }
+    
+            .container {
+                margin-left: 200px;
+                width: calc(100% - 200px);
+            }
+    
+            .container.sidebar-hidden {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+    
+        @media (min-width: 1240px) {
+            .sidebar {
+                width: 234px;
+            }
+    
+            .container {
+                margin-left: 234px;
+                width: calc(100% - 234px);
+            }
+    
+            .container.sidebar-hidden {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
 
     <!-- Sidebar -->
-    <div class="sidebar">
-        <img src="images/logo.png" alt="EDS Logo">
+    <div class="sidebar" id="sidebar">
+        <img src="img/extraduty_logo258x68_wht.png" alt="EDS Logo">
         <a href="javascript:void(0)" onclick="showSection('introduction')">Introduction</a>
         <a href="javascript:void(0)" onclick="showSection('getting-started')">Getting Started</a>
         <a href="javascript:void(0)" onclick="showSection('ui-walkthrough')">User Interface Walkthrough</a>
@@ -132,10 +233,11 @@
     </div>
 
     <!-- Main Content -->
-    <div class="container">
+    <div class="container" id="main-container">
         <!-- Header -->
         <header>
             <h1>Customer Portal User's Guide</h1>
+            <span class="hamburger" onclick="toggleSidebar()">&#9776;</span> <!-- Hamburger icon -->
         </header>
 
         <!-- Content Cards -->
@@ -174,16 +276,36 @@
         <div class="card" id="home-page">
             <h2>Home Page</h2>
             <p>The home page dashboard gives you a snapshot of your account. From here, you can easily access important tasks such as managing details and payments.</p>
-            <img src="users_guide/images/Homepage.png" alt="Home Page Dashboard" style="width:100%; max-width:800px;">
+            <img src="img/Homepage.png.png" alt="Home Page Dashboard" class="content-image">
         </div>
     </div>
 
     <script>
+        // Function to show only one section at a time
         function showSection(sectionId) {
-            document.querySelectorAll('.card').forEach(section => section.classList.remove('active'));
+            // Hide all sections
+            const sections = document.querySelectorAll('.card');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            // Show the selected section
             document.getElementById(sectionId).classList.add('active');
+
+            // Hide sidebar on mobile after selection
+            document.getElementById('sidebar').classList.remove('show');
+            document.getElementById('main-container').classList.remove('sidebar-visible');
         }
-        showSection('introduction'); // Display the Introduction by default
+
+        // Display the first section (Introduction) by default
+        showSection('introduction');
+
+        // Function to toggle sidebar visibility on small screens
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const mainContainer = document.getElementById('main-container');
+            sidebar.classList.toggle('show');
+            mainContainer.classList.toggle('sidebar-visible');
+        }
     </script>
 
 </body>
